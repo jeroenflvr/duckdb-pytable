@@ -1,10 +1,11 @@
 #pragma once
 
+#include "pyscalar.hpp"
 #include "duckdb.hpp"
 
 namespace duckdb {
 
-class QuackExtension : public Extension {
+class PytablesExtension : public Extension {
 public:
 	void Load(DuckDB &db) override;
 	std::string Name() override;

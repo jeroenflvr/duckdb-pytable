@@ -1,0 +1,23 @@
+# name: test/sql/pytables.test
+# description: test pytables extension
+# group: [pytables]
+
+# Before we load the extension, this will fail
+statement error
+SELECT pytables('Sam');
+----
+Catalog Error: Scalar Function with name pytables does not exist!
+
+# Require statement will ensure this test is run with this extension loaded
+require pytables
+
+# Confirm the extension works
+query I
+SELECT pytables('Sam');
+----
+Pytables Sam 🐥
+
+query I
+SELECT pytables_openssl_version('Michael');
+----
+<REGEX>:Pytables Michael, my linked OpenSSL version is OpenSSL.*
